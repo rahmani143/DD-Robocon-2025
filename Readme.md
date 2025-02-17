@@ -1,11 +1,12 @@
 This is the official Repository of Team Ozywik, ABU Robocon 2025
 
-The files uploaded include
- -The step files of individual robots
- -The animated videos of the mechanisms
- -The Onshape link for the workspace of the team
-
-There are 5 mechasims in total:
+The files uploaded include-
+ 1) The step files of individual robots
+ 2)  The animated videos of the mechanisms
+ 3)  The Onshape link for the workspace of the team
+ 
+  
+There are 5 mechasims animations in total:
  1) Swerve Animation- The swerve is incorporated for the robot 2(Reliable Robin), which has bewels meshed with the spur gears. 360 degrees rotatino is possible which provides. The rotation of the wheels and the                       direction of the wheels are controlled by different motors. It contains two motors one for steering and one for speed controlling.
  2) Hooded Shooter Animation- The hooded shooter is incorporated on the robot2, which is used to shoot the ball with precision. The shooting mechanism is used as the dribbling mechanism as well.
  3) Defence Mechanism- The defence mechanism includes wing like extensions which can be adjusted in 2 dimensions, in the Vertical and Horizontal directions, to gain maximum area coverage. It is a text-book like                         mechanism.
