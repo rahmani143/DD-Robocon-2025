@@ -10,7 +10,7 @@ The files uploaded include:
     4)  A robot demo Youtube Link.
  
 
-[<img src="https://techbagfrontend.s3-ap-south-1.amazonaws.com/logos/3BTgUzZhESyJxYxmx3dKif.png" alt="ROBOT FILES IN ONSHAPE" width="300" height="200">](https://cad.onshape.com/documents/ee03a5a1f900dbcc7e71d32c/w/cbfb37b0bfbfeb5e93541581/e/73d1d1fc25a642e90dab4315?renderMode=0&leftPanel=false&uiState=67b4ed1e680f453b7931f42f)
+[<img src="https://techbagfrontend.s3-ap-south-1.amazonaws.com/logos/3BTgUzZhESyJxYxmx3dKif.png" alt="ROBOT FILES IN ONSHAPE" width="200" height="200">](https://cad.onshape.com/documents/ee03a5a1f900dbcc7e71d32c/w/cbfb37b0bfbfeb5e93541581/e/73d1d1fc25a642e90dab4315?renderMode=0&leftPanel=false&uiState=67b4ed1e680f453b7931f42f)
 
 Please watch is robot demo video:
 
