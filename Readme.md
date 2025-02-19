@@ -2,19 +2,23 @@
 # OZYWIK - Robocon 2025
 
 
-The files uploaded include:
+### The files uploaded include:
     
     1)  The step files of individual robots, compressed in zip.
     2)  The animated videos of the mechanisms.
     3)  The Onshape link for the workspace of the team.
     4)  A robot demo Youtube Link.
- 
+
+## Please click the image below to watch complete mechanism demo of Robot 1 - Risky Batman:
+
+[<img src="https://github.com/user-attachments/assets/3e4f1e14-8f26-4c39-b100-559bdaa898b9" alt="Robot 1" width="200" height="200">](https://instructions.online/?id=16063-risky%20batman%20robot%20demo)
+
+## Please click the image below to view our Onshape workspace:
 
 [<img src="https://techbagfrontend.s3-ap-south-1.amazonaws.com/logos/3BTgUzZhESyJxYxmx3dKif.png" alt="ROBOT FILES IN ONSHAPE" width="200" height="200">](https://cad.onshape.com/documents/ee03a5a1f900dbcc7e71d32c/w/cbfb37b0bfbfeb5e93541581/e/73d1d1fc25a642e90dab4315?renderMode=0&leftPanel=false&uiState=67b4ed1e680f453b7931f42f)
 
-Please watch is robot demo video:
 
-There are 5 mechasims animations in total:
+### There are 5 mechasims animations in total:
 
     1) Robot 2 - Swerve Animation - 
         In 1st 5 seconds you can see the top and bottom bevels rotating with equal speed in opposite direction, so the wheel rotates and robot moves forward. In the next 5 seconds, the top and bottom bevels rotate with equal speed in same direction, so the robot changes direction.
