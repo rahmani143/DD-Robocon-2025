@@ -4,14 +4,18 @@
 
 ### The files uploaded include:
     
-    1)  The step files of individual robots, compressed in zip.
+    1)  ZIP files that contains STL and STEP files of individual robots.
     2)  The animated videos of the mechanisms.
     3)  The Onshape link for the workspace of the team.
-    4)  A robot demo Youtube Link.
+    4)  Full mechanism demo of individual robots.
 
 ## Please click the image below to watch complete mechanism demo of Robot 1 - Risky Batman:
 
 [<img src="https://github.com/user-attachments/assets/3e4f1e14-8f26-4c39-b100-559bdaa898b9" alt="Robot 1" width="200" height="200">](https://instructions.online/?id=16063-risky%20batman%20robot%20demo)
+
+## Please click the image below to watch complete mechanism demo of Robot 2 - Reliable Robin:
+
+[<img src="https://github.com/user-attachments/assets/ae60ad41-76ae-4a94-a2bf-0811e0569a86" alt="Robot 2" width="200" height="200">](https://instructions.online/?id=16063-reliable%20robin%20product%20reveal)
 
 ## Please click the image below to view our Onshape workspace:
 
@@ -34,4 +38,4 @@
     6) Robot 1 - DriveTrain Animation - 
         The wheels move up when the robot is landing to prevent damage. The fans suck air from underneath to increase downforce and traction on wheels.
 
-
+### Note: We accidentally switched Robot 1 and Robot 2 details in registration form. Everywhere else, including the Design Details Document and this Repository, its mentioned correctly. We sincerely apologize for this mistake.
