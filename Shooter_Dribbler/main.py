@@ -2,64 +2,83 @@ from machine import Pin, PWM
 import time
 
 
-# there is 1 motor for the flywheel
-# there are 3 motors for the defensive mechanism 
-#           - 1 for the closing of hands
-#           - 2 for the raising of the arms
-# there is 1 motor for the retractable hood
-# total = 5 motors
+Flywheel Motor	                        GP0
+Defense Arm Motor (Closing)	            GP1
+Defense Arm Motor (Raising - Left)	    GP2
+Defense Arm Motor (Raising - Right)	    GP3
+Retractable Hood Motor              	GP4
+Limit Switch (Closed - Hands)   	    GP5
+Limit Switch (Open - Hands)            	GP6
+Limit Switch (Raised - Arms)	        GP7
+Limit Switch (Lowered - Arms)       	GP8
+IR Detector (Ball Tracking)	            GP9
 
 
-# Assigning PWM pins to motors
-flywheel_motor = PWM(Pin(2))   # GP2 - Flywheel Motor
-hand_motor = PWM(Pin(3))       # GP3 - Closing Hands
-arm_left_motor = PWM(Pin(4))   # GP4 - Left Arm Raise
-arm_right_motor = PWM(Pin(5))  # GP5 - Right Arm Raise
-hood_motor = PWM(Pin(6))       # GP6 - Retractable Hood
+from machine import Pin, PWM, Timer
 
+# === Motor PWM Configuration ===
+PWM_FREQ = 16000  # 16kHz frequency for motors
 
-# Set PWM frequency for all motors
-MOTOR_FREQ = 1000  # 1kHz PWM frequency
-for motor in [flywheel_motor, hand_motor, arm_left_motor, arm_right_motor, hood_motor]:
-    motor.freq(MOTOR_FREQ)
+flywheel = PWM(Pin(0))  # Flywheel Motor
+defense_motor = PWM(Pin(1))  # Defense Arm Motor
+hood_motor = PWM(Pin(2))  # Retractable Hood Motor
 
-# Function to set motor speed (0-65535)
-def set_motor_speed(motor, speed):
-    """ Set PWM duty cycle (0 = OFF, 65535 = Full Speed) """
-    motor.duty_u16(speed)
+flywheel.freq(PWM_FREQ)
+defense_motor.freq(PWM_FREQ)
+hood_motor.freq(PWM_FREQ)
 
-# Stop all motors initially
-def stop_all_motors():
-    for motor in [flywheel_motor, hand_motor, arm_left_motor, arm_right_motor, hood_motor]:
-        set_motor_speed(motor, 0)
+# === Servo Configuration ===
+servo = PWM(Pin(5))  # Flap Servo
+servo.freq(50)  # Standard 50Hz for servos
 
-# Example usage
-stop_all_motors()  # Ensure all motors are off initially
+# === Limit Switches ===
+limit_closed = Pin(6, Pin.IN, Pin.PULL_UP)  # Fully closed position
+limit_open = Pin(7, Pin.IN, Pin.PULL_UP)  # Fully open position
 
-try:
-    while True:
-        # Test sequence - Modify based on your needs
-        
-        # Start Flywheel Motor at 75% Speed
-        set_motor_speed(flywheel_motor, 49152)  
-        time.sleep(2)
+# === IR Detector ===
+ir_sensor = Pin(8, Pin.IN, Pin.PULL_UP)  # Ball detection
 
-        # Close Hands (50% Speed)
-        set_motor_speed(hand_motor, 32768)
-        time.sleep(1)
+# === Motor Control Functions ===
+def set_motor(motor, duty):
+    """Set PWM duty cycle (0 to 65535)"""
+    motor.duty_u16(duty)
 
-        # Raise Arms (Left & Right at 60% Speed)
-        set_motor_speed(arm_left_motor, 39321)
-        set_motor_speed(arm_right_motor, 39321)
-        time.sleep(2)
+def stop_motor(motor):
+    """Stop the motor by setting duty cycle to 0"""
+    motor.duty_u16(0)
 
-        # Extend Retractable Hood (Full Speed)
-        set_motor_speed(hood_motor, 65535)
-        time.sleep(3)
+def set_servo(angle):
+    """Move servo to a specific angle (0° to 180°)"""
+    duty = int(1638 + (angle / 180) * (8192 - 1638))  # Convert angle to duty
+    servo.duty_u16(duty)
 
-        # Stop all motors
-        stop_all_motors()
-        time.sleep(2)
+# === Timer-Based Limit Switch Check ===
+def check_defense_motor(timer):
+    """Stops the defense motor when limits are reached"""
+    if limit_closed.value() == 0:  # If fully closed
+        stop_motor(defense_motor)
+    elif limit_open.value() == 0:  # If fully open
+        stop_motor(defense_motor)
 
-except KeyboardInterrupt:
-    stop_all_motors()  # Ensure motors stop when exiting
+# === Timer-Based IR Detection for Flap ===
+def check_flap(timer):
+    """Stops flap movement when the ball is detected"""
+    if ir_sensor.value() == 0:  # Ball detected
+        stop_motor(servo)
+
+# === Timers for Continuous Checking (Non-blocking) ===
+timer1 = Timer()
+timer1.init(period=100, mode=Timer.PERIODIC, callback=check_defense_motor)
+
+timer2 = Timer()
+timer2.init(period=100, mode=Timer.PERIODIC, callback=check_flap)
+
+# === Example Motor Control ===
+set_motor(flywheel, 40000)  # Run flywheel at ~60% speed
+set_motor(defense_motor, 30000)  # Start closing defense arms
+set_motor(hood_motor, 50000)  # Extend hood at ~80% speed
+set_servo(90)  # Move flap to 90 degrees
+
+# Main loop does not use delay() to avoid blocking other tasks
+while True:
+    pass  # Timers handle limit switch and IR sensor events
